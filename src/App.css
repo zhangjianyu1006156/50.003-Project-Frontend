@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .App {
   text-align: center;
   display: flex;
@@ -5,13 +9,20 @@
   align-items: center;
   justify-content: center;
   color: white;
-  background-image: url('./images/island_beach_aerial_view.jpg');
+  background-image: url("./images/island_beach_aerial_view.jpg");
   background-size: cover;
-  background-color: rgba(0, 0, 0, 0.5); /* Adjust the color and opacity as needed */
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Adjust the color and opacity as needed */
   background-blend-mode: darken;
 }
 
-.auth-form-container, .login-form, .register-form {
+.auth-form-container,
+.login-form,
+.register-form {
   display: flex;
   flex-direction: column;
 }
@@ -32,7 +43,7 @@ input {
   border-radius: 5px;
 }
 
-button {
+.submit {
   border: none;
   background-color: white;
   margin: 0.5rem 0;
@@ -43,6 +54,13 @@ button {
 }
 
 .link-btn {
+  border: none;
+  background-color: white;
+  margin: 0.5rem 0;
+  padding: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: black;
   background: none;
   color: white;
   text-decoration: underline;
