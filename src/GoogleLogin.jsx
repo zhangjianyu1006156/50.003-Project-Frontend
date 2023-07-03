@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { googleLogout, useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
 function GoogleLogin() {
   const [user, setUser] = useState(null);
   const [profile, setProfile] = useState(null);
+  const navigate = useNavigate();
 
   const login = useGoogleLogin({
     onSuccess: (codeResponse) => handleUserlogin(codeResponse),
@@ -13,6 +15,7 @@ function GoogleLogin() {
 
   function handleUserlogin(codeResponse) {
     setUser(codeResponse);
+    navigate('/results');
     console.log("Success");
   }
 
