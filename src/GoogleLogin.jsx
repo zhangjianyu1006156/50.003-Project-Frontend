@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { googleLogout, useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 function GoogleLogin() {
   const [user, setUser] = useState(null);
@@ -15,7 +15,7 @@ function GoogleLogin() {
 
   function handleUserlogin(codeResponse) {
     setUser(codeResponse);
-    navigate('/results');
+    navigate("/results");
     console.log("Success");
   }
 
@@ -45,7 +45,9 @@ function GoogleLogin() {
   };
 
   return (
-    <div>
+    <div className="auth-form-container">
+      <h2 className="font-bold text-4xl">TRIPFUSION</h2>
+      <br />
       {/* if you want to add in the main page after the login components add them after profile, this profile portion is the portion that displays after login in with gmail */}
       {profile ? (
         <div>
