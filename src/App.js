@@ -1,7 +1,7 @@
 import './App.css';
 import "./index.css";
 import { Login } from "./Login";
-import { Results } from "./Results";
+import Results from "./Results";
 import ProtectedRoutes from "./ProtectedRoutes";
 import { BrowserRouter, Route, Routes, Outlet, Navigate } from 'react-router-dom';
 

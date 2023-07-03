@@ -7,9 +7,14 @@ function GoogleLogin() {
   const [profile, setProfile] = useState(null);
 
   const login = useGoogleLogin({
-    onSuccess: (codeResponse) => setUser(codeResponse),
+    onSuccess: (codeResponse) => handleUserlogin(codeResponse),
     onError: (error) => console.log("Login Failed:", error),
   });
+
+  function handleUserlogin(codeResponse) {
+    setUser(codeResponse);
+    console.log("Success");
+  }
 
   useEffect(() => {
     if (user) {
@@ -38,7 +43,6 @@ function GoogleLogin() {
 
   return (
     <div>
-      <br />
       {/* if you want to add in the main page after the login components add them after profile, this profile portion is the portion that displays after login in with gmail */}
       {profile ? (
         <div>
@@ -56,10 +60,10 @@ function GoogleLogin() {
           <button
             type="button"
             onClick={() => login()}
-            className="w-full text-black bg-[#a2aab7] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-center text-sm px-5 py-2.5 inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-2"
+            className="w-full justify-center text-black bg-[#a2aab7] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-center text-base p-[15px] inline-flex items-center dark:focus:ring-[#4285F4]/55 m-2"
           >
             <svg
-              class="w-4 h-4 mr-2 -ml-1"
+              className="w-4 h-4 mr-2 -ml-1"
               aria-hidden="true"
               focusable="false"
               data-prefix="fab"
@@ -73,13 +77,6 @@ function GoogleLogin() {
                 d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"
               ></path>
             </svg>
-            Sign in with Google
-          </button>
-
-          <button
-            className="w-full text-white bg-[#4285F4] font-medium text-sm rounded-lg shadow-sm ring-2 px-5 py-2.5 items-center text-center hover:bg-[#4285F4]/90 dark:focus:ring-[#4285F4]/55 mr-2 mb-2 inline-flex"
-            onClick={() => login()}
-          >
             Sign in with Google
           </button>
         </div>
