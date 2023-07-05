@@ -1,24 +1,20 @@
 import './App.css';
 import "./index.css";
-import { Login } from "./Login";
-import GoogleLogin from './GoogleLogin';
-import Results from "./Results";
-import ProtectedRoutes from "./ProtectedRoutes";
-import { BrowserRouter, Route, Routes, Outlet, Navigate } from 'react-router-dom';
+import {Results} from "./Results";
+import { Route, Routes } from 'react-router-dom';
+import { AuthProvider, useAuth } from './Auth';
+import { Glogin } from './Glogin';
 
 function App() {
+  const auth = useAuth();
 
   return (
-    <BrowserRouter>
-      <div className="App">
+    <AuthProvider>
         <Routes>
-          <Route path="/" element={<GoogleLogin />} />
-          <Route element={<ProtectedRoutes />}>
-            <Route path="/results" element={<Results />} />
-          </Route>
-        </Routes>
-      </div>
-    </BrowserRouter>
+            <Route path="/" element={<Glogin/>} />
+            <Route path={"/results"} element={<Results />} />
+          </Routes>
+    </AuthProvider>
   );
 }
 

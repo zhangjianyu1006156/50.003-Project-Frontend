@@ -46,9 +46,7 @@ function GoogleLogin() {
 
   return (
     <div className="auth-form-container">
-      <h2 className="font-bold text-4xl">TRIPFUSION</h2>
-      <br />
-      {/* if you want to add in the main page after the login components add them after profile, this profile portion is the portion that displays after login in with gmail */}
+      <h2 className="font-bold text-3xl">TRIPFUSION</h2>
       {profile ? (
         <div>
           <img src={profile.picture} alt="dp" referrerPolicy="no-referrer" />
