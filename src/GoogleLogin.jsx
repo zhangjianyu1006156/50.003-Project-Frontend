@@ -3,7 +3,7 @@ import { googleLogout, useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-function GoogleLogin() {
+function GoogleLogin({stateChanger}) {
   const [user, setUser] = useState(null);
   const [profile, setProfile] = useState(null);
   const navigate = useNavigate();
@@ -15,9 +15,19 @@ function GoogleLogin() {
 
   function handleUserlogin(codeResponse) {
     setUser(codeResponse);
+    stateChanger(codeResponse);
+    // localStorage.setItem("user", codeResponse)
     navigate("/results");
     console.log("Success");
   }
+
+  // useEffect(() => {
+  //   const loggedInUser = localStorage.getItem("user");
+  //   if (loggedInUser) {
+  //     const foundUser = JSON.parse(loggedInUser);
+  //     setUser(foundUser);
+  //   }
+  // }, []);
 
   useEffect(() => {
     if (user) {
@@ -41,6 +51,8 @@ function GoogleLogin() {
   // log out function to log the user out of google and set the profile array to null
   const logOut = () => {
     googleLogout();
+    setUser(null);
+    stateChanger(null);
     setProfile(null);
   };
 
