@@ -1,23 +1,37 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "./Auth";
+import { AuthProvider, useAuth } from "./Auth";
+import axios from "axios";
+import { useGoogleLogin } from "@react-oauth/google";
 
 export const Glogin = () => {
-  const [user] = useState(null);
+  const [user, setUser] = useState("");
+  const [profile, setProfile] = useState("");
   const auth = useAuth();
   const navigate = useNavigate();
 
-  const handleLogin = () => {
-    auth.login(user);
+  const login = useGoogleLogin({
+    onSuccess: (codeResponse) => {
+      console.log(codeResponse);
+      handleLogin(codeResponse);
+    },
+    onError: (error) => console.log("Login Failed:", error),
+  });
+  //upon change in user use axios to convert the codeResponse:token into profile, which can extract login details.
+
+  const handleLogin = (codeResponse) => {
+    //return user:token and profile:uncodedtoken to auth to store in auth [user, profile]
+    auth.login(codeResponse);
     navigate("/results");
   };
+
   return (
     <div className="auth-form-container">
       <h2 className="font-bold text-3xl">TRIPFUSION</h2>
       <div className="flex flex-col items-center justify-center">
         <button
           type="button"
-          onClick={handleLogin}
+          onClick={login}
           className="w-full justify-center text-black bg-[#a2aab7] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-center text-base p-[15px] inline-flex items-center dark:focus:ring-[#4285F4]/55 m-2"
         >
           <svg

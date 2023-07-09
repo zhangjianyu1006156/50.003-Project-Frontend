@@ -1,22 +1,22 @@
 import React from "react";
 import { useAuth } from "./Auth";
+import { googleLogout } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
 
 export const Results = () => {
   const auth = useAuth();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleLogout = () => {
+    googleLogout();
     auth.logOut();
-    navigate("/");
+    // navigate("/");
   };
 
   return (
     <div>
       <h1>You reached results!</h1>
-      <h3>Welcome {auth.profile.name} </h3>
-      <p>Name: {auth.profile.name}</p>
-      <p>Email Address: {auth.profile.email}</p>
+      <h1>Welcome {auth.profile.name} </h1>
       <button onClick={handleLogout}>Log out</button>
     </div>
   );

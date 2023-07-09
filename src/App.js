@@ -1,20 +1,25 @@
-import './App.css';
+import "./App.css";
 import "./index.css";
-import {Results} from "./Results";
-import { Route, Routes } from 'react-router-dom';
-import { AuthProvider, useAuth } from './Auth';
-import { Glogin } from './Glogin';
+import { Results } from "./Results";
+import { Route, Routes, redirect } from "react-router-dom";
+import { AuthProvider, useAuth } from "./Auth";
+import { Glogin } from "./Glogin";
 
 function App() {
   const auth = useAuth();
-
   return (
-    <AuthProvider>
+    <div className="App">
+      <AuthProvider>
         <Routes>
-            <Route path="/" element={<Glogin/>} />
-            <Route path={"/results"} element={<Results />} />
-          </Routes>
-    </AuthProvider>
+          {!auth.profile ? (
+            <Route path="/" element={<Glogin />} />
+          ) : (
+            <redirect to="./Results" />
+          )}
+          <Route path="/results" element={<Results />} />
+        </Routes>
+      </AuthProvider>
+    </div>
   );
 }
 
