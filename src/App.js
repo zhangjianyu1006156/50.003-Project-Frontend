@@ -1,7 +1,7 @@
 import './App.css';
 import "./index.css";
 import GoogleLogin from './GoogleLogin';
-import Results from "./Results";
+import Results from "./pages/Results";
 import React, { useState } from "react";
 import { BrowserRouter, Route, Routes, Outlet, Navigate } from 'react-router-dom';
 
