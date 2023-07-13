@@ -1,3 +1,4 @@
+//can delete if it all works
 import { Navigate, Outlet } from "react-router-dom";
 
 const useAuth = () => {

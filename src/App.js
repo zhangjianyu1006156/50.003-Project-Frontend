@@ -1,24 +1,29 @@
 import "./App.css";
 import "./index.css";
 import { Results } from "./Results";
-import { Route, Routes, redirect } from "react-router-dom";
-import { AuthProvider, useAuth } from "./Auth";
+import { Route, Routes, useLocation, Navigate } from "react-router-dom";
+import { useAuthContext } from "./Auth";
+import { RequireAuth } from "./RequireAuth";
 import { Glogin } from "./Glogin";
 
 function App() {
-  const auth = useAuth();
+  const { user } = useAuthContext();
+  console.log(user);
+  //const location = useLocation();
+  //const pathName = location.state?.from || "/"; //in this scenario the state if location.state is true is /results
   return (
     <div className="App">
-      <AuthProvider>
-        <Routes>
-          {!auth.profile ? (
-            <Route path="/" element={<Glogin />} />
-          ) : (
-            <redirect to="./Results" />
-          )}
-          <Route path="/results" element={<Results />} />
-        </Routes>
-      </AuthProvider>
+      <Routes>
+        <Route
+          path="/results"
+          element={
+            <RequireAuth>
+              <Results />
+            </RequireAuth>
+          }
+        />
+        <Route path="/" element={<Glogin />} />
+      </Routes>
     </div>
   );
 }
