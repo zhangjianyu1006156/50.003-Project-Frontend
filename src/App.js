@@ -2,6 +2,7 @@ import './App.css';
 import "./index.css";
 import GoogleLogin from './GoogleLogin';
 import Results from "./pages/Results";
+import PackageInfo from "./pages/PackageInfo";
 import React, { useState } from "react";
 import { BrowserRouter, Route, Routes, Outlet, Navigate } from 'react-router-dom';
 
@@ -20,6 +21,7 @@ function App() {
           <Route path="/" element={<GoogleLogin stateChanger={setUser} />} />
           <Route element={<ProtectedRoutes />}>
             <Route path="/results" element={<Results />} />
+            <Route path="/packageinfo" element={<PackageInfo />} />
           </Route>
         </Routes>
       </div>
