@@ -1,6 +1,7 @@
 import React from 'react';
 import placeholderImage from '../images/island_beach_aerial_view.jpg';
 import { useNavigate } from "react-router-dom";
+import Rating from "./Rating";
 
 const ResultsRow = () => {
 
@@ -12,16 +13,21 @@ const ResultsRow = () => {
   };
 
   return (
-    <div className="row product" onClick={handleClick}>
-      <div className="col-md-2">
-        <img src={placeholderImage} alt="Placeholder Image" height="150" />
-      </div>
-      <div className="col-md-8 product-detail">
-        <h4>Blue T-Shirt </h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      </div>
-      <div className="col-md-2 product-price">
-        $19.99
+    <div class="py-8">
+      <div class="rounded-lg overflow-hidden" onClick={handleClick}>
+        <div class="grid grid-cols-3">
+          <div class="col-span-1">
+            <img class="h-full w-full object-cover" src={placeholderImage} alt="Card Image"/>
+          </div>
+          <div class="col-span-2 w-full flex flex-col items-start px-8 py-4 bg-white">
+            <div class = "w-full flex flex-row justify-between">
+              <h3 class="text-3xl font-semibold text-gray-600">Placename</h3>
+              <h3 class="text-3xl font-semibold text-gray-600">S$0.00</h3>
+            </div>
+            <p class="mt-2 text-gray-600">from Klook/Trip.com</p>
+            <Rating/>
+          </div>
+        </div>
       </div>
     </div>
   );
