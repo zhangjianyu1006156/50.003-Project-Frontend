@@ -13,8 +13,8 @@ const ResultsRow = () => {
   };
 
   return (
-    <div class="py-8">
-      <div class="rounded-lg overflow-hidden" onClick={handleClick}>
+    <div class="py-8 px-8">
+      <div class="rounded-xl overflow-hidden" onClick={handleClick}>
         <div class="grid grid-cols-3">
           <div class="col-span-1">
             <img class="h-full w-full object-cover" src={placeholderImage} alt="Card Image"/>
