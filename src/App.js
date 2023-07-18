@@ -1,7 +1,7 @@
 import "./App.css";
 import "./index.css";
 import { Results } from "./Results";
-import { Route, Routes, useLocation, Navigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { useAuthContext } from "./Auth";
 import { RequireAuth } from "./RequireAuth";
 import { Glogin } from "./Glogin";

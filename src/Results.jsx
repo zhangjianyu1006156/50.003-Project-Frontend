@@ -10,7 +10,7 @@ export const Results = () => {
   const handleLogout = () => {
     googleLogout();
     auth.logOut();
-    //sessionStorage.clear();
+    localStorage.clear();
   };
 
   return (

@@ -4,7 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export const useAuth = () => {
-  const [user, setUser] = useState(null); // for data persistance with user name. no sure exactly what to do with this yet
+  const [user, setUser] = useLocalStorage("user", null); // for data persistance with user name. no sure exactly what to do with this yet
   const [profile, setProfile] = useState(null);
   const navigate = useNavigate();
 
@@ -21,6 +21,21 @@ export const useAuth = () => {
   useEffect(() => {
     if (user) {
       console.log("i finally updated");
+    }
+  }, [user]);
+
+  useEffect(() => {
+    console.log("geronimo is testing to send a post request");
+    if (user) {
+      console.log("geronimo has sent a post request");
+      axios
+        .post("http://localhost:8000/profile", { key: user })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   }, [user]);
   //   useEffect(() => {
@@ -45,6 +60,7 @@ export const useAuth = () => {
   const logOut = () => {
     setUser(null);
     setProfile(null);
+    console.log(user);
     navigate("/");
   };
 
