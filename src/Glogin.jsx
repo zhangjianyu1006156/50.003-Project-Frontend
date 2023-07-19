@@ -1,7 +1,6 @@
 import React from "react";
 import { useGoogleLogin } from "@react-oauth/google";
 import { useAuthContext } from "./Auth";
-import Client from "./client";
 
 export const Glogin = () => {
   //const auth = useAuth();
@@ -17,7 +16,6 @@ export const Glogin = () => {
 
   return (
     <div className="auth-form-container">
-      <Client />
       <h2 className="font-bold text-5xl mb-2">TRIPFUSION</h2>
       <div className="flex flex-col items-center justify-center">
         <button
