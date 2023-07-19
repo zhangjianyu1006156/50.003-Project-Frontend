@@ -5,7 +5,7 @@ import App from "./App";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { ThemeProvider } from "@material-tailwind/react";
 import { BrowserRouter } from "react-router-dom";
-import { AuthProvider } from "./Auth";
+import { AuthProvider } from "./AuthContext/Auth";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

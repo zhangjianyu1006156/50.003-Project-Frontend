@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useAuthContext } from "./Auth";
+import { useAuthContext } from "./AuthContext/Auth";
 
 function Client() {
   const [message, setMessage] = useState("");

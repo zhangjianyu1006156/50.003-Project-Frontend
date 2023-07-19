@@ -1,9 +1,9 @@
 import "./App.css";
 import "./index.css";
-import { Results } from "./Results";
+import { Results } from "./pages/Results";
 import { Route, Routes } from "react-router-dom";
-import { useAuthContext } from "./Auth";
-import { RequireAuth } from "./RequireAuth";
+import { useAuthContext } from "./AuthContext/Auth";
+import { RequireAuth } from "./AuthContext/RequireAuth";
 import { Glogin } from "./Glogin";
 import PackageInfo from "./pages/PackageInfo";
 

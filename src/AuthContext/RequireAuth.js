@@ -1,5 +1,5 @@
-import { useLocation, Navigate } from "react-router-dom";
-import { useAuthContext } from "./Auth";
+import { Navigate } from "react-router-dom";
+import { useAuthContext } from "../AuthContext/Auth";
 
 function RequireAuth({ children }) {
   //const location = useLocation(); //uselocation() returns the location of the URL, location object includes; pathname, state search
