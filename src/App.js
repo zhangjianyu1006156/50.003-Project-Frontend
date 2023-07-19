@@ -1,31 +1,30 @@
-import './App.css';
+import "./App.css";
 import "./index.css";
-import GoogleLogin from './GoogleLogin';
-import Results from "./pages/Results";
-import PackageInfo from "./pages/PackageInfo";
-import React, { useState } from "react";
-import { BrowserRouter, Route, Routes, Outlet, Navigate } from 'react-router-dom';
+import { Results } from "./Results";
+import { Route, Routes } from "react-router-dom";
+import { useAuthContext } from "./Auth";
+import { RequireAuth } from "./RequireAuth";
+import { Glogin } from "./Glogin";
 
 function App() {
-
-  const[user, setUser]=useState(null);
-
-  const ProtectedRoutes = () => {
-    return user ? <Outlet /> : <Navigate to="/" />;
-  };
-
+  const { user } = useAuthContext();
+  console.log(user);
+  //const location = useLocation();
+  //const pathName = location.state?.from || "/"; //in this scenario the state if location.state is true is /results
   return (
-    <BrowserRouter>
-      <div className="App">
-        <Routes>
-          <Route path="/" element={<GoogleLogin stateChanger={setUser} />} />
-          <Route element={<ProtectedRoutes />}>
-            <Route path="/results" element={<Results />} />
-            <Route path="/packageinfo" element={<PackageInfo />} />
-          </Route>
-        </Routes>
-      </div>
-    </BrowserRouter>
+    <div className="App">
+      <Routes>
+        <Route
+          path="/results"
+          element={
+            <RequireAuth>
+              <Results />
+            </RequireAuth>
+          }
+        />
+        <Route path="/" element={<Glogin />} />
+      </Routes>
+    </div>
   );
 }
 
