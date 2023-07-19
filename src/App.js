@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import { useAuthContext } from "./Auth";
 import { RequireAuth } from "./RequireAuth";
 import { Glogin } from "./Glogin";
+import { PackageInfo } from "./pages/PackageInfo";
 
 function App() {
   const { user } = useAuthContext();
@@ -23,6 +24,7 @@ function App() {
           }
         />
         <Route path="/" element={<Glogin />} />
+        <Route path="/packageinfo" element={<PackageInfo />} />
       </Routes>
     </div>
   );
