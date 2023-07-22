@@ -2,9 +2,11 @@ import React from "react";
 import ImageCarousel from "../components/ImageCarousel";
 import Rating from "../components/Rating";
 import { Button } from "@material-tailwind/react";
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
-export default function PackageInfo(){
+export const PackageInfo = () => {
+
+    const navigate = useNavigate();
 
     const location = useLocation();
 
@@ -13,12 +15,16 @@ export default function PackageInfo(){
     const handleBook = () => {
     };
 
+    const handleCompare = () => {
+      navigate("/comparisons", { state: source });
+    };
+
     if (!source) {
       return <div>this is a bug</div>;
     }
 
     return(
-        <div class="py-8 px-8 w-full">
+        <div class="py-8 px-24 w-full">
         <div class="rounded-xl overflow-hidden w-full">
           <div class="grid grid-rows-3 w-full">
             <div class="row-span-1 w-full">
@@ -31,10 +37,9 @@ export default function PackageInfo(){
                 <h3 class="text-3xl font-semibold text-gray-600">S${source.bookingprice}</h3>
               </div>
               <p class="mt-2 text-gray-600">from {source.sourcewebsite}</p>
-              <div class = "w-full flex flex-row justify-between">
-                <Rating/>
-                <Button color="green" onClick={handleBook}>Book now</Button>
-              </div>
+              <Rating/>
+              <Button color="green" onClick={handleBook}>Book now</Button>
+              <Button color="green" onClick={handleCompare}>Compare</Button>
             </div>
           </div>
         </div>

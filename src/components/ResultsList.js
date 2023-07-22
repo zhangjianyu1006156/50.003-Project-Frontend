@@ -9,6 +9,10 @@ function resultsList(props) {
     );
   }
 
+  const handleClick = (data) => {
+    props.handleClick(data);
+  };
+
   return (
     <div>
         {props.results.map((result) => {
@@ -18,6 +22,7 @@ function resultsList(props) {
                 placename={result.placename}
                 bookingprice={result.bookingprice}
                 sourcewebsite={result.sourcewebsite}
+                handleClick={handleClick}
               />
             );
         })}

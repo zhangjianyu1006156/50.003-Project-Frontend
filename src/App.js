@@ -1,11 +1,12 @@
 import "./App.css";
 import "./index.css";
-import { Results } from "./pages/Results";
 import { Route, Routes } from "react-router-dom";
 import { useAuthContext } from "./AuthContext/Auth";
 import { RequireAuth } from "./AuthContext/RequireAuth";
 import { Glogin } from "./Glogin";
-import PackageInfo from "./pages/PackageInfo";
+import {Results} from "./pages/Results";
+import {PackageInfo} from "./pages/PackageInfo";
+import {Comparisons} from "./pages/Comparisons";
 
 function App() {
   const { user } = useAuthContext();
@@ -24,7 +25,19 @@ function App() {
           }
         />
         <Route path="/" element={<Glogin />} />
-        <Route path="/packageinfo" element={<PackageInfo />} />
+        <Route path="/packageinfo" element={            
+            <RequireAuth>
+              <PackageInfo />
+            </RequireAuth>
+          }
+        />
+        <Route path="/comparisons" element={            
+            <RequireAuth>
+              <Comparisons />
+            </RequireAuth>
+          }
+        />
+        
       </Routes>
     </div>
   );
