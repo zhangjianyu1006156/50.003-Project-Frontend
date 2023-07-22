@@ -12,7 +12,7 @@ export const useAuth = () => {
   const login = async (data) => {
     try {
       setUser(data);
-      navigate("/results");
+      navigate("/search");
     } catch (err) {
       console.log("Failed to sign ins");
     }

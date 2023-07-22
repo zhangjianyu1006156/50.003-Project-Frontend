@@ -7,6 +7,7 @@ import { Glogin } from "./Glogin";
 import {Results} from "./pages/Results";
 import {PackageInfo} from "./pages/PackageInfo";
 import {Comparisons} from "./pages/Comparisons";
+import {Search} from "./pages/Search";
 
 function App() {
   const { user } = useAuthContext();
@@ -16,6 +17,15 @@ function App() {
   return (
     <div className="App">
       <Routes>
+      <Route
+          path="/search"
+          element={
+            <RequireAuth>
+              <Search />
+            </RequireAuth>
+          }
+        />
+
         <Route
           path="/results"
           element={
