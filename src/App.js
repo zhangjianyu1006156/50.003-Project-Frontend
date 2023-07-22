@@ -7,6 +7,8 @@ import { Glogin } from "./Glogin";
 import {Results} from "./pages/Results";
 import {PackageInfo} from "./pages/PackageInfo";
 import {Comparisons} from "./pages/Comparisons";
+import {ComparisonInfo} from "./pages/ComparisonInfo";
+import {Search} from "./pages/Search";
 
 function App() {
   const { user } = useAuthContext();
@@ -16,6 +18,14 @@ function App() {
   return (
     <div className="App">
       <Routes>
+        <Route
+          path="/search"
+          element={
+            <RequireAuth>
+              <Search />
+            </RequireAuth>
+          }
+        />
         <Route
           path="/results"
           element={
@@ -34,6 +44,12 @@ function App() {
         <Route path="/comparisons" element={            
             <RequireAuth>
               <Comparisons />
+            </RequireAuth>
+          }
+        />
+                <Route path="/comparisoninfo" element={            
+            <RequireAuth>
+              <ComparisonInfo />
             </RequireAuth>
           }
         />

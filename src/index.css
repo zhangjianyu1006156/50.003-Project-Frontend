@@ -14,4 +14,55 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
-}
+  }
+
+
+  @layer base {
+    body {
+      @apply font-[Poppins]
+    }
+  
+    li {
+      @apply p-4
+    }
+  
+    h1 {
+      @apply text-3xl md:text-4xl font-bold
+    }
+  
+    h2 {
+      @apply text-3xl font-bold
+    }
+  
+    h3 {
+      @apply text-xl font-bold
+    }
+    button {
+      @apply p-3 border bg-gradient-to-r from-[var(--primary-dark)] to-[var(--primary-light)] text-white rounded-md
+    }
+    .icon {
+      @apply text-2xl cursor-pointer
+    }
+  }
+  
+  :root {
+    --primary-dark: #5651e5;
+    --primary-light: #709dff;
+  }
+  
+  .link-btn {
+    border: none;
+    background-color: white;
+    margin: 0.5rem 0;
+    padding: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: black;
+    background: none;
+    color: white;
+    text-decoration: underline;
+  }
+  
+  .icon {
+    color: var(--primary-dark);
+  }

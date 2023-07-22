@@ -26,20 +26,31 @@ export const PackageInfo = () => {
     return(
         <div class="py-8 px-24 w-full">
         <div class="rounded-xl overflow-hidden w-full">
-          <div class="grid grid-rows-3 w-full">
-            <div class="row-span-1 w-full">
+          <div class="w-full">
+            <div class="w-full">
               {/* <img class="h-full w-full object-cover" src={placeholderImage} alt="Card Image"/> */}
               <ImageCarousel class="w-full"/>
             </div>
-            <div class="row-span-2 w-full flex flex-col items-start px-8 py-4 bg-white">
+            <div class="w-full flex flex-col items-start px-8 py-4 bg-white">
               <div class = "w-full flex flex-row justify-between">
                 <h3 class="text-3xl font-semibold text-gray-600">{source.placename}</h3>
-                <h3 class="text-3xl font-semibold text-gray-600">S${source.bookingprice}</h3>
+                <h3 class="text-3xl font-semibold text-gray-600">S${source.bookingprice}, {source.bookingmode}</h3>
               </div>
-              <p class="mt-2 text-gray-600">from {source.sourcewebsite}</p>
-              <Rating/>
+              <div class = "w-full flex flex-row justify-between">
+                <p class="mt-2 text-gray-600">from {source.sourcewebsite}</p>
+                <Rating rating={source.rating}/>
+              </div>
+              <h3 class="text-left mt-2 text-gray-600">We had a meeting with the client regarding our project plan.
+Having discussed the user case documentation with the client, we were made aware of the importance of the use case in which we notify partner sites of a successful booking or cancellation. We did not expand on the specifics of this use case, and we will have to attend to it in the project plan.
+We informed the client of our intention to use the agile development system and discussed its suitability for their requirements. The client agreed that we needed to push many versions/permutations of the website to test and improve the features, which the agile system facilitates. 
+To assure the client of the projects feasibility and provide a rough timeline of what and when they can expect, we gave them the projects schedule and intended workload distribution, which they said was especially detailed and well thought out.
+</h3>
+              <div class="py-4">
               <Button color="green" onClick={handleBook}>Book now</Button>
+              </div>
+              <div class="pb-4">
               <Button color="green" onClick={handleCompare}>Compare</Button>
+              </div>
             </div>
           </div>
         </div>

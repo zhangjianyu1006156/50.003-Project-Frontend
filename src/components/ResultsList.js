@@ -22,6 +22,9 @@ function resultsList(props) {
                 placename={result.placename}
                 bookingprice={result.bookingprice}
                 sourcewebsite={result.sourcewebsite}
+                images={result.images}
+                rating={result.rating}
+                bookingmode={result.bookingmode}
                 handleClick={handleClick}
               />
             );

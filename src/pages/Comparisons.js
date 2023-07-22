@@ -13,25 +13,24 @@ export const Comparisons = () => {
 
   const source = location.state;
 
-  const handleLogout = () => {
-    auth.logOut();
-  };
-
-  const handleClick = (data) => {
-    navigate("/packageinfo", { state: data });
-  };
-
   useEffect(() => {
-
     const filtered = GetResults().filter(item => item.id !== source.id);
-
     setResults(filtered);
   }, []);
 
+  if (!source) {
+    return <div>this is a bug</div>;
+  }
+
+  const handleClick = (data) => {
+    navigate("/comparisoninfo", { state: {
+      my: source,
+      other: data,
+    } });
+  };
+
   return (
     <div>
-      <h1 className="font-bold text-2xl">You reached results!</h1>
-      <button onClick={handleLogout}>Log out</button>
       <ResultsList results={results} handleClick={handleClick}/>
     </div>
   );

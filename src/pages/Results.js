@@ -18,9 +18,6 @@ export const Results = () => {
   };
 
   useEffect(() => {
-    // async
-    // api here
-    
     setResults(GetResults());
   }, []);
 
