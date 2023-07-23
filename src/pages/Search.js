@@ -12,13 +12,11 @@ export const Search = () => {
         </h1>
 
         <form className='w-full'>
-              <div className='flex flex-col my-2'>
-                  <select className='border rounded-md p-2 text-black'>
-                      <option>Fuji-Q Highland</option>
-                      <option>Osaka</option>
-                      <option>Disneyland</option>
-                      <option>Universal Studio Japan</option>
-                  </select>
+              <div className='flex flex-col my-2 text-left'>
+                <label>Destination</label>
+                  <input className='border rounded-md p-2 text-black'>
+                      
+                  </input>
               </div>
               <div className='flex flex-col my-2 text-left'>
                   <label>Arrival</label>
