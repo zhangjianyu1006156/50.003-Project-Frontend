@@ -12,8 +12,19 @@ export const PackageInfo = () => {
 
     const source = location.state;
 
-    const handleBook = () => {
-      navigate("/booking", {state: source});
+    async function handleBook (){
+      try{
+        
+        const response = await axios.post('/users');
+        console.log("Booking successful!")
+
+        navigate("/booking", {state: source});
+        return response.data;
+      } catch (error) {
+        console.error('Failed to perform booking', error);
+        return [];
+      }
+      
     };
 
     const handleCompare = () => {
