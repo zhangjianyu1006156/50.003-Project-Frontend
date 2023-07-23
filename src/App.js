@@ -9,6 +9,7 @@ import {PackageInfo} from "./pages/PackageInfo";
 import {Comparisons} from "./pages/Comparisons";
 import {ComparisonInfo} from "./pages/ComparisonInfo";
 import {Search} from "./pages/Search";
+import {Booking} from "./pages/Booking";
 
 function App() {
   const { user } = useAuthContext();
@@ -50,6 +51,14 @@ function App() {
                 <Route path="/comparisoninfo" element={            
             <RequireAuth>
               <ComparisonInfo />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/booking"
+          element={
+            <RequireAuth>
+              <Booking />
             </RequireAuth>
           }
         />

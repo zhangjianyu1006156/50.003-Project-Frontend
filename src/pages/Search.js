@@ -1,8 +1,18 @@
-import React from 'react';
+import { React, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export const Search = () => {
   const navigate = useNavigate();
+  const [searchText, setSearchText] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleSearch = () => {
+    if (searchText === '') {
+      setErrorMessage('Input cannot be empty');
+    } else {
+      navigate("/results")
+    }
+  }
 
   return (
     <div>
@@ -14,8 +24,11 @@ export const Search = () => {
         <form className='w-full'>
               <div className='flex flex-col my-2 text-left'>
                 <label>Destination</label>
-                  <input className='border rounded-md p-2 text-black'>
-                      
+                  <input className='border rounded-md p-2 text-black'
+                  type='text'
+                  value={searchText}
+                  onChange={(e) => setSearchText(e.target.value)}
+                  placeholder="Search...">
                   </input>
               </div>
               <div className='flex flex-col my-2 text-left'>
@@ -26,8 +39,8 @@ export const Search = () => {
                   <label>Budget</label>
                   <input className='border rounded-md p-2 text-black' type="number" min="0" />
               </div>
-                <button className='w-full my-4' onClick={() => {navigate("/Results");
-              }}>Search Now!</button>
+                <button className='w-full my-4' onClick={(handleSearch)}>Search Now!</button>
+                {errorMessage && <div className="error-message">{errorMessage}</div>}
           </form>
 
       </div>

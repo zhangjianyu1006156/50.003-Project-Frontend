@@ -5,7 +5,7 @@ import { AuthProvider } from '../AuthContext/Auth';
 import { RequireAuth } from '../AuthContext/RequireAuth'
 
 describe('RequireAuth component', () => {
-    it('should redirect to the login page when not logged in', () => {
+    test('should redirect to the login page when not logged in', () => {
       render(
         <MemoryRouter initialEntries={['/search']}>
           <AuthProvider>
