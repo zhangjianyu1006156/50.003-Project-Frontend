@@ -13,11 +13,13 @@ export const PackageInfo = () => {
     const source = location.state;
 
     const handleBook = () => {
+      navigate("/booking", {state: source});
     };
 
     const handleCompare = () => {
       navigate("/comparisons", { state: source });
     };
+    
 
     if (!source) {
       return <div>this is a bug</div>;
@@ -46,7 +48,7 @@ We informed the client of our intention to use the agile development system and 
 To assure the client of the projects feasibility and provide a rough timeline of what and when they can expect, we gave them the projects schedule and intended workload distribution, which they said was especially detailed and well thought out.
 </h3>
               <div class="py-4">
-              <Button color="green" onClick={handleBook}>Book now</Button>
+              <Button color="green" onClick={(handleBook)}>Book now</Button>
               </div>
               <div class="pb-4">
               <Button color="green" onClick={handleCompare}>Compare</Button>
