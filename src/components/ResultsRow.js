@@ -33,7 +33,7 @@ const ResultsRow = (props) => {
 
   return (
     <div className='py-4'>
-    <Card className="w-full max-w-[48rem] flex-row" onClick={handleClick}>
+    <Card className="w-full max-w-[48rem] flex-row cursor-pointer" onClick={handleClick}>
     <CardHeader
       shadow={false}
       floated={false}
@@ -47,8 +47,8 @@ const ResultsRow = (props) => {
     </CardHeader>
     <CardBody className="w-full flex flex-col items-start px-4 py-2">
       <div className = "w-full flex flex-row justify-between">
-        <h3 class="text-2xl font-semibold text-gray-600">{data.placename}</h3>
-        <h3 class="text-2xl font-semibold text-gray-600">S${data.bookingprice}</h3>
+        <h3 className="text-2xl font-semibold text-gray-600">{data.placename}</h3>
+        <h3 className="text-2xl font-semibold text-gray-600">S${data.bookingprice}</h3>
       </div>
       <p class="mt-2 text-gray-600">from {data.sourcewebsite}</p>
       <Rating rating = {data.rating}/>

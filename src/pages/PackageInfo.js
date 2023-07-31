@@ -3,6 +3,7 @@ import ImageCarousel from "../components/ImageCarousel";
 import Rating from "../components/Rating";
 import { Button } from "@material-tailwind/react";
 import { useLocation, useNavigate } from 'react-router-dom';
+import { NavbarSimple } from "../components/Navbar";
 
 export const PackageInfo = () => {
 
@@ -13,7 +14,16 @@ export const PackageInfo = () => {
     const source = location.state;
 
     const handleBook = () => {
-      navigate("/booking", {state: source});
+      // try{
+      //   const response = await axios.post('/users');
+      //   console.log("Booking successful!")
+
+      //   navigate("/booking");
+      //   return response.data;
+      // } catch (error) {
+      //   console.error('Failed to perform booking', error);
+      //   return [];
+      // }
     };
 
     const handleCompare = () => {
@@ -26,6 +36,8 @@ export const PackageInfo = () => {
     }
 
     return(
+      <div>
+        <NavbarSimple/>
         <div class="py-8 px-24 w-full">
         <div class="rounded-xl overflow-hidden w-full">
           <div class="w-full">
@@ -56,6 +68,7 @@ To assure the client of the projects feasibility and provide a rough timeline of
             </div>
           </div>
         </div>
+      </div>
       </div>
     )
 }

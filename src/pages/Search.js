@@ -1,11 +1,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { NavbarSimple } from '../components/Navbar';
 
 export const Search = () => {
   const navigate = useNavigate();
 
   return (
     <div>
+      <NavbarSimple/>
       <div>
         <h1 className='w-full h-full flex font-bold text-3xl p-4'>
           Let the journey begin now

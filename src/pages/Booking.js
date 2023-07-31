@@ -1,19 +1,26 @@
-import React from "react";
-import { useLocation, useNavigate } from 'react-router-dom';
+import { React, useState } from "react";
+import { NavbarSimple } from "../components/Navbar";
+import { ResultsList } from "../components/ResultsList"
 
 
 export const Booking = () => {
-    const navigate = useNavigate();
 
-    const location = useLocation();
+    const [bookings, setBookings] = useState([]);
+    
+    const handleDelete = (data) => {
+        // handle delete
+    };
+
+    // useEffect(() => {
+    //     GetBookings(setBookings, null);
+    //      // refresh page here
+    //   }, [GetBookings]);
 
     return(
         <div>
-            <h1 className='w-full h-full flex font-bold text-3xl p-4'>
-            This is your booking page.
-                </h1>
+            <NavbarSimple/>
+            <h3 className="text-2xl font-semibold text-gray-600">Click to delete any booking</h3>
+            {/* <ResultsList results={bookings} handleClick={handleDelete}/> */}
         </div>
-
     )
-
 };
