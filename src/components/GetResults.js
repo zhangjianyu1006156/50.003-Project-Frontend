@@ -35,7 +35,7 @@ import { useCallback, useState } from "react";
 const GetResults = async (setResults, filterSource, filter) => {
   var res = "";
   try {
-    const data = await axios.get("/products");
+    const data = await axios.get("http://172.17.0.1:8080/products");
     let results = data.response;
     res = results;
   } catch (error) {

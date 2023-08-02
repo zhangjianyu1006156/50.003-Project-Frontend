@@ -29,7 +29,7 @@ export const useAuth = () => {
     if (user) {
       console.log("geronimo has sent a post request");
       axios
-        .post("http://localhost:8000/profile", { key: user })
+        .post("http://172.17.0.1:8080/users/profile", { key: user })
         .then((res) => {
           console.log(res);
         })
