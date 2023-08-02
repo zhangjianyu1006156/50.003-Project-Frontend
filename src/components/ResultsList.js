@@ -18,6 +18,7 @@ function resultsList(props) {
         {props.results.map((result) => {
             return (          
             <ResultsRow
+                key={result.id}
                 id={result.id}
                 placename={result.placename}
                 bookingprice={result.bookingprice}
