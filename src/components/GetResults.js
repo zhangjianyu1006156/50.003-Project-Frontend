@@ -3,7 +3,15 @@ import { useCallback } from "react";
 
 const GetResults = async (setResults, filterSource) => {
   try{
-    const {data: response} = await axios.get('http://172.17.0.1:8080/products');
+    const config = {
+      headers: {
+        'Access-Control-Allow-Credentials':true,
+        'Access-Control-Allow-Origin':true,
+        'Access-Control-Allow-Headers':'Origin',
+
+      }
+    }
+    const {data: response} = await axios.get('http://188.166.191.110.nip.io:8080/products');
     let results = response;
     console.log("mongodb data here")
     console.log(results)
