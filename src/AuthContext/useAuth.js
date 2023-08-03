@@ -17,6 +17,7 @@ export const useAuth = () => {
       console.log("Failed to sign ins");
     }
   };
+  console.log(user);
 
   useEffect(() => {
     if (user) {
