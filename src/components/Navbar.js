@@ -1,7 +1,8 @@
-import { Navbar, Typography } from "@material-tailwind/react";
-import { Navigate, useNavigate } from "react-router-dom";
-import { useAuth } from "../AuthContext/useAuth";
-import { React } from "react";
+const { Navbar, Typography } = require("@material-tailwind/react");
+const { Navigate, useNavigate } = require("react-router-dom");
+const { useAuth } = require("../AuthContext/useAuth");
+const React = require("react");
+
 
 export function NavbarSimple() {
   const auth = useAuth();

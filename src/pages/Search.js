@@ -1,8 +1,8 @@
-import { React, useState } from "react";
+import React, { useState } from "react"; // Use ES6 import syntax
 import { useNavigate } from "react-router-dom";
 import { NavbarSimple } from "../components/Navbar";
 
-export const Search = () => {
+export function Search() {
   const [query, setQuery] = useState({ dest: "", date: "", budget: "" });
   const navigate = useNavigate();
 
@@ -64,4 +64,4 @@ export const Search = () => {
       </div>
     </div>
   );
-};
+}
