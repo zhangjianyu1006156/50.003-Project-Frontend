@@ -15,12 +15,16 @@
     "web-vitals": "^2.1.4"
   },
   "type": "module",
+  "devServer":{
+    "disableHostCheck":true
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "jest",
     "eject": "react-scripts eject"
   },
+  
   "eslintConfig": {
     "extends": [
       "react-app",
