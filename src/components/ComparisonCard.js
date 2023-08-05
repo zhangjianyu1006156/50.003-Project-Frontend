@@ -10,6 +10,7 @@ import {
   } from "@material-tailwind/react";
 import Rating from "./Rating";
 import { useNavigate } from "react-router-dom";
+import React from "react";
    
 const ComparisonCard  = (props) => {
 

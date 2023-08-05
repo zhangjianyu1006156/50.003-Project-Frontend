@@ -1,4 +1,5 @@
 import ResultsRow from "./ResultsRow";
+import React from "react";
 
 function resultsList(props) {
   if (props.results.length === 0) {
