@@ -17,7 +17,7 @@ export const Results = () => {
   useEffect(() => {
     GetResults(setResults, null, location.state);
     console.log(location.state);
-  }, [location.state]);
+  }, [GetResults]);
 
   return (
     <div>

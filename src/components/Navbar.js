@@ -34,21 +34,21 @@ export function NavbarSimple() {
           </h3>
           <ul className="my-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
             <a
-              href="#"
+              href=""
               className="flex items-center hover:text-blue-500 transition-colors"
               onClick={handleSearchClick}
             >
               Search
             </a>
             <a
-              href="#"
+              href=""
               className="flex items-center hover:text-blue-500 transition-colors"
               onClick={handleBookingsClick}
             >
               View bookings
             </a>
             <a
-              href="#"
+              href=""
               className="flex items-center hover:text-blue-500 transition-colors"
               onClick={handleLogout}
             >
