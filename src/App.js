@@ -65,6 +65,15 @@ function App() {
             </RequireAuth>
           }
         />
+        <Route
+          path="/booking"
+          element={
+            <RequireAuth>
+              <Booking />
+            </RequireAuth>
+          }
+        />
+        
       </Routes>
     </div>
   );
