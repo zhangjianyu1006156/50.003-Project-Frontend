@@ -1,6 +1,6 @@
-import React from 'react';
-import placeholderImage from '../images/island_beach_aerial_view.jpg';
-import Rating from "./Rating";
+const React = require('react');
+const placeholderImage = '../images/island_beach_aerial_view.jpg';
+const Rating = require('./Rating');
 
 import {
   Card,
@@ -18,12 +18,14 @@ const ResultsRow = (props) => {
 
   const data =
   {
-    id: props.id,
-    placename: props.placename,
-    bookingprice: props.bookingprice,
+    key:props.product_id,
+    id: props.product_id,
+    placename: props.name, //name
+    bookingprice: props.price, //bookingprice
     sourcewebsite: props.sourcewebsite,
-    images: props.images,
+    image: props.image,
     rating: props.rating,
+    text: props.description, //text
     bookingmode: props.bookingmode,
   };
 
@@ -33,22 +35,22 @@ const ResultsRow = (props) => {
 
   return (
     <div className='py-4'>
-    <Card className="w-full max-w-[48rem] flex-row" onClick={handleClick}>
+    <Card className="w-full max-w-[48rem] flex-row cursor-pointer" onClick={handleClick}>
     <CardHeader
       shadow={false}
       floated={false}
       className="m-0 w-2/5 shrink-0 rounded-r-none"
     >
       <img
-        src={data.images[0]}
+        src={data.image}
         alt="card-image"
         className="h-full w-full object-cover"
       />
     </CardHeader>
     <CardBody className="w-full flex flex-col items-start px-4 py-2">
       <div className = "w-full flex flex-row justify-between">
-        <h3 class="text-2xl font-semibold text-gray-600">{data.placename}</h3>
-        <h3 class="text-2xl font-semibold text-gray-600">S${data.bookingprice}</h3>
+        <h3 className="text-2xl font-semibold text-gray-600">{data.placename}</h3>
+        <h3 className="text-2xl font-semibold text-gray-600">S${data.bookingprice}</h3>
       </div>
       <p class="mt-2 text-gray-600">from {data.sourcewebsite}</p>
       <Rating rating = {data.rating}/>

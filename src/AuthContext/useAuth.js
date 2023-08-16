@@ -6,7 +6,8 @@ import { useNavigate } from "react-router-dom";
 
 export const useAuth = () => {
   const [user, setUser] = useLocalStorage("user", null); // for data persistance with user name. no sure exactly what to do with this yet
-  const [profile, setProfile] = useState(null);
+  const [profile, setProfile] = useLocalStorage("profile", null);
+  const [bookings, setBookings] = useLocalStorage("bookings", null);
   const navigate = useNavigate();
 
   const login = async (data) => {
@@ -14,10 +15,10 @@ export const useAuth = () => {
       setUser(data);
       navigate("/search");
     } catch (err) {
-      console.log("Failed to sign ins");
+      console.log("Failed to sign in:", err);
+      console.log("Failed to sign in:", err);
     }
   };
-  console.log(user);
 
   useEffect(() => {
     if (user) {
@@ -30,24 +31,27 @@ export const useAuth = () => {
     if (user) {
       console.log("geronimo has sent a post request");
       axios
-        .post("http://localhost:8000/profile", { key: user })
+        .post("http://188.166.191.110.nip.io:8080/users/profile", { key: user})
         .then((res) => {
-          console.log(res);
+          console.log(res.data.result);
+          setProfile(res.data.result);
+          console.log(res.data.result);
+          setProfile(res.data.result);
         })
         .catch((err) => {
           console.log(err);
         });
     }
-  }, [user]);
+  }, [user, setProfile]);
+  }, [user, setProfile]);
 
   const logOut = () => {
     googleLogout();
     setUser(null);
     setProfile(null);
-    console.log(user);
     navigate("/");
     localStorage.clear();
   };
 
-  return { user, profile, login, logOut };
+  return { user, profile, login, logOut, bookings, setBookings};
 };

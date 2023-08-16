@@ -1,31 +1,27 @@
-import { React, useEffect, useState } from "react";
-import { useAuth } from "../AuthContext/useAuth";
+import React, {useEffect, useState } from "react";
 import ResultsList from "../components/ResultsList";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation} from "react-router-dom";
 import GetResults from "../components/GetResults";
+import { NavbarSimple } from "../components/Navbar";
 
 export const Results = () => {
-  const auth = useAuth();
   const [results, setResults] = useState([]);
   const navigate = useNavigate();
-
-  const handleLogout = () => {
-    auth.logOut();
-  };
+  const location = useLocation();
 
   const handleClick = (data) => {
     navigate("/packageinfo", { state: data });
   };
 
   useEffect(() => {
-    setResults(GetResults());
-  }, []);
+    GetResults(setResults, null);
+  }, [GetResults]);
 
-  return (
-    <div>
-      <h1 className="font-bold text-2xl">You reached results!</h1>
-      <button onClick={handleLogout}>Log out</button>
-      <ResultsList results={results} handleClick={handleClick}/>
-    </div>
+  return ( 
+    <div className="overflow-scroll overflow-hidden"> 
+      <NavbarSimple /> 
+      <div className="py-16"></div> 
+      <ResultsList className="overflow-hidden" results={results} handleClick={handleClick} /> 
+    </div> 
   );
 };

@@ -10,6 +10,7 @@ import {
   } from "@material-tailwind/react";
 import Rating from "./Rating";
 import { useNavigate } from "react-router-dom";
+import React from "react";
    
 const ComparisonCard  = (props) => {
 
@@ -18,12 +19,13 @@ const ComparisonCard  = (props) => {
     const handleClick = () => {
         navigate("/packageinfo", { state: props.my });
       };
-
+      console.log("props.my");
+      console.log(props.my);
     return (
       <Card className="w-full max-w-[26rem] shadow-lg">
         <CardHeader floated={false} color="blue-gray">
           <img
-            src={props.my.images[0]}
+            src={props.my.image}
             alt="ui/ux review check"
           />
           <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-tr from-transparent via-transparent to-black/60 " />

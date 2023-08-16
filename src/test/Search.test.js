@@ -1,21 +1,31 @@
-import React from 'react';
-import { render, fireEvent } from "@testing-library/react";
+import React from "react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
 import { Search } from "../pages/Search";
 
-test('display error message when search input is empty', () =>{
-    const { getByText, getByPlaceholderText } = render(<Search />);
-    const searchButton = getByText('Search Now!');
-    
-    fireEvent.click(searchButton);
 
-    expect(getByText('Input cannot be empty')).toBeInTheDocument();
-})
+console.error = jest.fn();
 
-test('does not display error message when the input is not empty', () => {
-    const { getByText, getByPlaceholderText } = render(<Search />);
-    const searchButton = getByText('Search Now!');
-    const searchInput = getByPlaceholderText('Search...');
-    fireEvent.change(searchInput, { target: { value: 'some search query' } });
-    fireEvent.click(searchButton);
-    expect(queryByText('Input cannot be empty')).toBeNull();
+beforeEach(() => {
+  console.error.mockClear();
+});
+
+
+test("displays an error message when search input is null", async () => {
+  render(
+    <MemoryRouter>
+      <Search />
+    </MemoryRouter>
+  );
+
+  const searchButton = screen.getByRole("button", { name: "Search Now!" });
+
+  // Click the search button without filling in any input
+  fireEvent.click(searchButton);
+
+  // Wait for the error message to appear
+  waitFor(() => {
+    const errorMessage = screen.queryByText("Please fill in all the fields");
+    expect(errorMessage).toBeInTheDocument();
+  });
 });

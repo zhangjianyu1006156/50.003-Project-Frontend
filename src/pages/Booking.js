@@ -8,7 +8,25 @@ export const Booking = () => {
     const navigate = useNavigate();
     const auth = useAuth();
 
-    const location = useLocation();
+    const [bookings, setBookings] = useState([]);
+    
+    const handleDelete = (data) => {
+    };
+
+  useEffect(() => {
+    axios
+      .get(`http://172.17.0.1:8080/users/${profile}`)
+      .then((response) => {
+        // Use the data returned from the server (list of bookings)
+        setBookings(response.data.details);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        // Handle any errors that occurred during the request
+        console.error(error);
+      });
+    // refresh page here
+  }, []);
 
     const handleLogout = () => {
         auth.logOut();

@@ -1,49 +1,67 @@
-import { React, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react"; // Use ES6 import syntax
+import { useNavigate } from "react-router-dom";
+import { NavbarSimple } from "../components/Navbar";
 
-export const Search = () => {
+export function Search() {
+  const [query, setQuery] = useState({ dest: "", date: "", budget: "" });
   const navigate = useNavigate();
-  const [searchText, setSearchText] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
 
-  const handleSearch = () => {
-    if (searchText === '') {
-      setErrorMessage('Input cannot be empty');
-    } else {
-      navigate("/results")
-    }
+  const toResults = () => {
+    navigate("/Results", {
+      state: { dest: query.dest, date: query.date, budget: query.budget },
+    });
+    console.log(query.date);
+  };
+
+  function changeQuery(e) {
+    setQuery({ ...query, [e.target.name]: e.target.value });
   }
 
   return (
     <div>
+      <NavbarSimple />
       <div>
-        <h1 className='w-full h-full flex font-bold text-3xl p-4'>
+        <h1 className="w-full h-full flex font-bold text-3xl p-4">
           Let the journey begin now
         </h1>
 
-        <form className='w-full'>
-              <div className='flex flex-col my-2 text-left'>
-                <label>Destination</label>
-                  <input className='border rounded-md p-2 text-black'
-                  type='text'
-                  value={searchText}
-                  onChange={(e) => setSearchText(e.target.value)}
-                  placeholder="Search...">
-                  </input>
-              </div>
-              <div className='flex flex-col my-2 text-left'>
-                  <label>Arrival</label>
-                  <input className='border rounded-md p-2 text-black' type="date" />
-              </div>
-              <div className='flex flex-col my-2 text-left'>
-                  <label>Budget</label>
-                  <input className='border rounded-md p-2 text-black' type="number" min="0" />
-              </div>
-                <button className='w-full my-4' onClick={(handleSearch)}>Search Now!</button>
-                {errorMessage && <div className="error-message">{errorMessage}</div>}
-          </form>
-
+        <form className="w-full">
+          <div className="flex flex-col my-2 text-left">
+            <label>Destination</label>
+            <input
+              type="text"
+              name="dest"
+              value={query.dest}
+              className="border rounded-md p-2 text-black"
+              onChange={changeQuery}
+            ></input>
+          </div>
+          <div className="flex flex-col my-2 text-left">
+            <label>Arrival</label>
+            <input
+              className="border rounded-md p-2 text-black"
+              type="date"
+              name="date"
+              value={query.date}
+              onChange={changeQuery}
+            />
+          </div>
+          <div className="flex flex-col my-2 text-left">
+            <label>Budget</label>
+            <input
+              className="border rounded-md p-2 text-black"
+              type="number"
+              name="budget"
+              value={query.budget}
+              onChange={changeQuery}
+              min="0"
+            />
+          </div>
+          <button className="w-full my-4" onClick={toResults}>
+            Search Now!
+          </button>
+        </form>
       </div>
     </div>
   );
-};
+}
