@@ -16,6 +16,7 @@ export const useAuth = () => {
       navigate("/search");
     } catch (err) {
       console.log("Failed to sign in:", err);
+      console.log("Failed to sign in:", err);
     }
   };
 
@@ -34,11 +35,14 @@ export const useAuth = () => {
         .then((res) => {
           console.log(res.data.result);
           setProfile(res.data.result);
+          console.log(res.data.result);
+          setProfile(res.data.result);
         })
         .catch((err) => {
           console.log(err);
         });
     }
+  }, [user, setProfile]);
   }, [user, setProfile]);
 
   const logOut = () => {

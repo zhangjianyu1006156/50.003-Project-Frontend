@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from "react";
+import React, {useEffect, useState } from "react";
 import ResultsList from "../components/ResultsList";
 import { useNavigate, useLocation} from "react-router-dom";
 import GetResults from "../components/GetResults";
@@ -14,9 +14,8 @@ export const Results = () => {
   };
 
   useEffect(() => {
-    GetResults(setResults, null, location.state);
-    console.log(location.state);
-  }, [location.state]);
+    GetResults(setResults, null);
+  }, [GetResults]);
 
   return ( 
     <div className="overflow-scroll overflow-hidden"> 

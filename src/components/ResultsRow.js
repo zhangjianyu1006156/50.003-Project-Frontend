@@ -1,6 +1,6 @@
-import React from 'react';
-import placeholderImage from '../images/island_beach_aerial_view.jpg';
-import Rating from "./Rating";
+const React = require('react');
+const placeholderImage = '../images/island_beach_aerial_view.jpg';
+const Rating = require('./Rating');
 
 import {
   Card,
