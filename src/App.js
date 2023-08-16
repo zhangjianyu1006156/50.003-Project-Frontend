@@ -1,7 +1,6 @@
 import "./App.css";
 import "./index.css";
 import { Route, Routes } from "react-router-dom";
-import { useAuthContext } from "./AuthContext/Auth";
 import { RequireAuth } from "./AuthContext/RequireAuth";
 import { Glogin } from "./Glogin";
 import {Results} from "./pages/Results";
@@ -12,8 +11,6 @@ import {Search} from "./pages/Search";
 import {Booking} from "./pages/Booking";
 
 function App() {
-  const { user } = useAuthContext();
-  console.log(user);
   //const location = useLocation();
   //const pathName = location.state?.from || "/"; //in this scenario the state if location.state is true is /results
   return (

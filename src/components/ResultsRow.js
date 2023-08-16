@@ -18,12 +18,14 @@ const ResultsRow = (props) => {
 
   const data =
   {
-    id: props.id,
-    placename: props.placename,
-    bookingprice: props.bookingprice,
+    key:props.product_id,
+    id: props.product_id,
+    placename: props.name, //name
+    bookingprice: props.price, //bookingprice
     sourcewebsite: props.sourcewebsite,
-    images: props.images,
+    image: props.image,
     rating: props.rating,
+    text: props.description, //text
     bookingmode: props.bookingmode,
   };
 
@@ -40,7 +42,7 @@ const ResultsRow = (props) => {
       className="m-0 w-2/5 shrink-0 rounded-r-none"
     >
       <img
-        src={data.images[0]}
+        src={data.image}
         alt="card-image"
         className="h-full w-full object-cover"
       />
